@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business & Culture in Kazakhstan Survey</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { max-width: 600px; margin: auto; }
+        label { font-weight: bold; }
+        textarea, select, input { width: 100%; margin-bottom: 15px; padding: 8px; }
+        button { background-color: #007bff; color: white; padding: 10px; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h2>Business & Culture in Kazakhstan Survey</h2>
+    <form id="surveyForm">
+        <label>1. How important do you think cultural knowledge is for doing business in Kazakhstan?</label>
+        <select name="q1">
+            <option>Very important</option>
+            <option>Somewhat important</option>
+            <option>Not important</option>
+        </select>
+
+        <label>2. Have you ever faced cultural misunderstandings in business interactions in Kazakhstan? If yes, how did you handle them?</label>
+        <textarea name="q2"></textarea>
+
+        <label>3. Do you believe understanding Kazakh traditions and customs gives businesses a competitive advantage? Why or why not?</label>
+        <textarea name="q3"></textarea>
+
+        <label>4. How do you think foreign businesses should adapt to the local culture to succeed in Kazakhstan?</label>
+        <textarea name="q4"></textarea>
+
+        <label>5. In your opinion, which cultural aspects (language, traditions, business etiquette, etc.) are the most crucial for successful business in Kazakhstan?</label>
+        <textarea name="q5"></textarea>
+
+        <label>6. How do Kazakh values, such as hospitality and respect for elders, influence business relationships?</label>
+        <textarea name="q6"></textarea>
+
+        <label>7. Do you think businesses that incorporate Kazakh cultural elements (e.g., in marketing, customer service) are more successful? Why?</label>
+        <textarea name="q7"></textarea>
+
+        <label>8. What advice would you give to an entrepreneur who wants to start a business in Kazakhstan but is unfamiliar with the local culture?</label>
+        <textarea name="q8"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Survey Responses</h2>
+    <div id="responses"></div>
+
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let responsesDiv = document.getElementById('responses');
+            let formData = new FormData(event.target);
+            let responseHTML = '<div><h3>New Response:</h3><ul>';
+            
+            formData.forEach((value, key) => {
+                responseHTML += `<li><strong>${key}:</strong> ${value}</li>`;
+            });
+            responseHTML += '</ul></div>';
+            
+            responsesDiv.innerHTML += responseHTML;
+            event.target.reset();
+        });
+    </script>
+</body>
+</html>
